@@ -1,0 +1,18 @@
+name: mqn-search
+channels:
+  - conda-forge
+  - tmap
+
+dependencies:
+  - python=3.9
+  - pip
+  - numpy=1.26
+  - pandas>=2,<3
+  - pyarrow>=14,<18
+  - rdkit=2023.09
+  - tmap
+  - ogdf
+  - pytest
+  - ipykernel
+  - pip:
+      - -e .

@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cctype>
+#include "reader.h"
+#include <unistd.h>  // For isatty() and fileno()
+
+typedef unsigned int uint;
+
+static inline void rtrim(std::string &s) {
+    s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+        return !std::isspace(ch);
+    }).base(), s.end());
+}
+
+int main() {
+    // Check if standard input is from a terminal.
+    // If so, likely no input has been provided.
+    if (isatty(fileno(stdin))) {
+        std::cerr << "Usage: Provide SMILES strings via standard input.\n";
+        std::cerr << "Examples:\n";
+        std::cerr << "    echo \"CCO\" | ./mqn_stdio\n";
+        std::cerr << "    ./mqn_stdio < input.txt\n";
+        return 1;
+    }
+
+    std::string smiles;
+    // Process each line from standard input
+    while (std::getline(std::cin, smiles)) {
+        rtrim(smiles);
+        if (smiles.empty()) continue; // Skip empty lines
+        
+        reader rd;
+        rd.read(smiles);
+        const std::vector<uint>& mqn = rd.get_mqn();
+
+        // Output the MQN vector as a Python list literal
+        std::cout << "[";
+        bool first = true;
+        for (uint val : mqn) {
+            if (!first) {
+                std::cout << ", ";
+            }
+            std::cout << val;
+            first = false;
+        }
+        std::cout << "]" << std::endl;
+    }
+    return 0;
+}
