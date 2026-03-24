@@ -4,12 +4,12 @@ This directory contains the C++ implementation used to compute MQN descriptors f
 
 Main files:
 
-- [main.cpp](/scratch/work/projects/AbbVie/mqn/github/repos/mqn-search/src_cpp/mqn_search/main.cpp): file-based executable
-- [main.cpp_stdio](/scratch/work/projects/AbbVie/mqn/github/repos/mqn-search/src_cpp/mqn_search/main.cpp_stdio): stdio-oriented variant
-- [reader.cpp](/scratch/work/projects/AbbVie/mqn/github/repos/mqn-search/src_cpp/mqn_search/reader.cpp)
-- [reader.h](/scratch/work/projects/AbbVie/mqn/github/repos/mqn-search/src_cpp/mqn_search/reader.h)
+- [main.cpp](main.cpp): file-based executable
+- [main.cpp_stdio](main.cpp_stdio): stdio-oriented variant
+- [reader.cpp](reader.cpp)
+- [reader.h](reader.h)
 
-The file-based binary is used by [1_add_MQN2file.sh](/scratch/work/projects/AbbVie/mqn/github/repos/mqn-search/scripts/prepare_data/1_add_MQN2file.sh).
+The file-based binary is used by [1_add_MQN2file.sh](../../scripts/prepare_data/1_add_MQN2file.sh).
 
 Expected behavior:
 

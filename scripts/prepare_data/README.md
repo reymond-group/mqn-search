@@ -4,7 +4,7 @@ This directory contains the sequential data-preparation pipeline.
 
 Before running the pipeline:
 
-1. unpack the gzipped source files in [datasets](/scratch/work/projects/AbbVie/mqn/github/repos/mqn-search/datasets)
+1. unpack the gzipped source files in [datasets](../../datasets)
 2. activate the `mqn-search` conda environment
 3. ensure `build/bin/mqn_new` exists and is executable
 
