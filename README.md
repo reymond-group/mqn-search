@@ -83,7 +83,7 @@ See [scripts/prepare_data/README.md](scripts/prepare_data/README.md) for brief p
 Current benchmark entry points:
 
 - [08_benchmark_MQN_rdkit.py](benchmark/08_benchmark_MQN_rdkit.py): RDKit MQN generation benchmark
-- [09_benchmark_MQN_Sven.sh](benchmark/09_benchmark_MQN_Sven.sh): external C++ MQN binary benchmark
+- [09_benchmark_MQN_binary.sh](benchmark/09_benchmark_MQN_binary.sh): external C++ MQN binary benchmark
 - [16_benchmark_lshforest_robust.py](benchmark/16_benchmark_lshforest_robust.py): approximate search benchmark against exact MHFP truth files
 
 See [benchmark/README.md](benchmark/README.md) for details.

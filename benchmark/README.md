@@ -6,7 +6,7 @@ Files:
 
 - `08_benchmark_MQN_rdkit.py`
   Computes RDKit MQNs for a supplied molecule file and logs runtime.
-- `09_benchmark_MQN_Sven.sh`
+- `09_benchmark_MQN_binary.sh`
   Benchmarks the external C++ MQN binary used in the prep pipeline.
 - `16_benchmark_lshforest_robust.py`
   Evaluates approximate per-bin LSH retrieval against exact MHFP truth files from `datasets/VS_MHFP/`.
@@ -37,8 +37,8 @@ python benchmark/16_benchmark_lshforest_robust.py --resume
 python benchmark/16_benchmark_lshforest_robust.py --span 1 --per-bin-candidates-k 5000
 ```
 
-The `09_benchmark_MQN_Sven.sh` helper benchmarks the external C++ MQN binary directly:
+The `09_benchmark_MQN_binary.sh` helper benchmarks the external C++ MQN binary directly:
 
 ```bash
-bash benchmark/09_benchmark_MQN_Sven.sh
+bash benchmark/09_benchmark_MQN_binary.sh
 ```

@@ -12,6 +12,8 @@ htmlcov/
 .DS_Store
 .vscode/
 .idea/
+.codex
+.codex/
 AGENTS.md
 
 benchmark_out/

@@ -5,7 +5,7 @@ fp_length = 512
 #seed = 420
 minhash = tm.Minhash(fp_length)
 
-### use this, as this is compatible with AbbVie TMAP stuff provided by Sven
+### use this implementation because it stays compatible with the TMAP-based workflow in this repository
 def get_shingles(smiles):
 
     qry_shingles = set()

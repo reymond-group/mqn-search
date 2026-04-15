@@ -62,6 +62,12 @@ def parse_args():
         default=chunk_size,
         help="Number of CSV rows to process per parquet chunk.",
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=os.cpu_count() or 1,
+        help="Number of worker processes to use. Default uses os.cpu_count().",
+    )
     return parser.parse_args()
 
 def setup_logging(output_prefix):
@@ -151,7 +157,7 @@ def worker(start, chunk_size, input_file, output_prefix):
         log_and_print(f"Error in worker for start row {start}. Error: {e}")
 
 # Main function to manage multiprocessing
-def main(input_file, output_prefix, chunk_size):
+def main(input_file, output_prefix, chunk_size, workers):
     # we want to follow what is going on
     setup_logging(output_prefix)
     start_time = time.time()
@@ -165,9 +171,9 @@ def main(input_file, output_prefix, chunk_size):
     start_time = time.time()
 
     # Set up multiprocessing
-    CPU = 16
-    pool = mp.Pool(CPU)
-    log_and_print(f"Using {CPU} cores.")
+    cpu_count = max(1, int(workers))
+    pool = mp.Pool(cpu_count)
+    log_and_print(f"Using {cpu_count} cores.")
     starts = range(0, total_rows, chunk_size)  # Header is read separetely, these are rows after header
     print(f"these are the starts: {list(starts)}")
 
@@ -179,4 +185,4 @@ def main(input_file, output_prefix, chunk_size):
 if __name__ == "__main__":
     args = parse_args()
     args.output_prefix.parent.mkdir(parents=True, exist_ok=True)
-    main(str(args.input), str(args.output_prefix), args.chunk_size)
+    main(str(args.input), str(args.output_prefix), args.chunk_size, args.workers)

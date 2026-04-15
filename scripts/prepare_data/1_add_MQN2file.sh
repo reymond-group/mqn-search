@@ -11,6 +11,13 @@ MQN_BIN="${REPO_ROOT}/build/bin/mqn_new"
 LOG="${REPO_ROOT}/datasets/1_addMQN.log"
 TMPDIR="$(mktemp -d "${TMPDIR:-/tmp}/mqn_add_XXXXXX")"
 
+if command -v nproc >/dev/null 2>&1; then
+    DEFAULT_SPLITS="$(nproc)"
+else
+    DEFAULT_SPLITS="$(getconf _NPROCESSORS_ONLN)"
+fi
+SPLITS="${SPLITS:-${DEFAULT_SPLITS}}"
+
 cleanup() {
     rm -rf "${TMPDIR}"
 }
@@ -25,7 +32,6 @@ if [ ! -x "${MQN_BIN}" ]; then
 fi
 
 # Split in chunks to parallize it
-SPLITS=16
 echo "Splitting the file into ${SPLITS} chunks under ${TMPDIR}" >> "${LOG}"
 split -n "l/${SPLITS}" -d "${INFILE}" "${TMPDIR}/chunk_"
 
