@@ -57,6 +57,8 @@ The tracked `datasets/` contents are gzipped source inputs. See [datasets/README
 
 Generated outputs such as `BINS/`, `LSHF/`, `IDX/`, `VS_MHFP/`, parquet chunks, and logs are intended to be created locally and kept out of version control.
 
+For a new dataset, we recommend the user preprocess their file and ensure that an RDKit molecule can be created from each SMILES string.
+
 ## Preparation Pipeline
 
 The active prep sequence is:
